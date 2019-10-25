@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  mysql:
+    build: ./mysql/  # Dockerfileを利用
+    ports:
+      - "13306:3306" # ポートを開ける
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_USER=dev-user
+      - MYSQL_PASSWORD=dev-pass
+      - MYSQL_DATABASE=develop
+
+  app:
+    image: openjdk:11
+    depends_on:
+      - mysql
+    ports:
+      - "18080:8080"
+    volumes:
+      - ../../build/libs:/application # ローカルの/build/libsをマウント
+    command: java -jar application/sample-web-board.jar

@@ -1,0 +1,43 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.5.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.sample.mybatis-generator'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-web-services'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-devtools'
+
+    // Thymeleaf
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.thymeleaf:thymeleaf:3.0.9.RELEASE'
+    implementation 'org.thymeleaf:thymeleaf-spring4:3.0.9.RELEASE'
+
+    // DataSource
+    implementation 'mysql:mysql-connector-java:5.1.47'
+    
+    // MyBatis
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1'
+}

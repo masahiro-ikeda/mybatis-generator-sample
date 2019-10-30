@@ -68,7 +68,6 @@ task mybatisGenerator {
         ant.properties['connectionURL'] = datasource.getProperty('datasource.mysql.url')
         ant.properties['userId'] = datasource.getProperty('datasource.mysql.username')
         ant.properties['password'] = datasource.getProperty('datasource.mysql.password')
-        ant.properties['schema'] = datasource.getProperty('datasource.mysql.schema')
 
         def config = new Properties()
         file('src/main/resources/generator/generator_config.properties').withInputStream { inputStream ->
